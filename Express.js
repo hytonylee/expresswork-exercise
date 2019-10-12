@@ -1,14 +1,23 @@
-//// Expressworks Exercise #4: Good Old Form
+//// Expressworks Exercise #5: Stylish CSS
 const express = require('express')
-const bodyParser = require('body-parser')
-const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }))
-app.post('/form', (req, res) => {
-    res.send(req.body.str.split('').reverse().join(''))
-})
+const app = express()
+app.use(require('stylus').middleware(process.argv[3]))
+app.use(express.static(process.argv[3]))
 
 app.listen(process.argv[2])
+
+
+//// Expressworks Exercise #4: Good Old Form
+// const express = require('express')
+// const bodyParser = require('body-parser')
+// const app = express();
+
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.post('/form', (req, res) => {
+//     res.send(req.body.str.split('').reverse().join(''))
+// })
+
+// app.listen(process.argv[2])
 
 
 //// Expressworks Exercise #3: Pug
