@@ -1,16 +1,26 @@
-//// Expressworks Exercise #6: Param Pam Pam
+//// Expressworks Exercise #7: What's in Query
 const express = require('express')
 const app = express()
-app.put('/message/:id', (req, res) => {
-    const id = req.params.id
-    str = require('crypto')
-        .createHash('sha1')
-        .update(new Date().toDateString() + id)
-        .digest('hex')
-    res.send(str)
+app.get('/search', (req, res) => {
+    const query = req.query
+    res.send(query)
 })
-
 app.listen(process.argv[2])
+
+
+
+//// Expressworks Exercise #6: Param Pam Pam
+// const express = require('express')
+// const app = express()
+// app.put('/message/:id', (req, res) => {
+//     const id = req.params.id
+//     str = require('crypto')
+//         .createHash('sha1')
+//         .update(new Date().toDateString() + id)
+//         .digest('hex')
+//     res.send(str)
+// })
+// app.listen(process.argv[2])
 
 
 //// Expressworks Exercise #5: Stylish CSS
