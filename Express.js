@@ -1,11 +1,31 @@
-//// Expressworks Exercise #7: What's in Query
+//// Expressworks Exercise #8: JSON Me
 const express = require('express')
 const app = express()
-app.get('/search', (req, res) => {
-    const query = req.query
-    res.send(query)
+const fs = require('fs')
+app.get('/books', (req, res) => {
+    const filename = process.argv[3]
+    fs.readFile(filename, (error, data) => {
+        if (error) {
+            return res.sendStatus(500)
+        }
+        try {
+            const books = JSON.parse(data)
+            res.json(books)
+        } catch (error) {
+            res.sendStatus(500)
+        }
+    })
 })
 app.listen(process.argv[2])
+
+//// Expressworks Exercise #7: What's in Query
+// const express = require('express')
+// const app = express()
+// app.get('/search', (req, res) => {
+//     const query = req.query
+//     res.send(query)
+// })
+// app.listen(process.argv[2])
 
 
 
